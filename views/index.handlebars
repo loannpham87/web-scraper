@@ -1,0 +1,45 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">NYT Scraper</h1>
+    <p class="lead">Scrape all your news with MongoDB!</p>
+  </div>
+</div>
+
+<div class="btn-group" id="button-actions" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary">Home</button>
+  <button type="button" class="btn btn-primary">Saved Articles</button>
+  <button type="button" class="btn btn-danger">Scrape New Articles</button>
+</div>
+
+<div class="col-md-12 articles-div">
+        {{!-- {{#if articles}} --}}
+            {{#each articles}}
+            {{#unless saved}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>{{title}}</h4>
+                </div>
+                <div class="panel-body">
+                    {{!-- <p> {{this.paragraph}}</p> --}}
+                    <a href="https://www.nytimes.com{{link}}"  target="_blank">https://www.nytimes.com{{link}}</a>
+                    <br><br>
+                    <button type="button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
+                </div>
+            </div>
+            {{/unless}}
+            {{/each}}
+        {{!-- {{else}} --}}
+
+{{!-- Modal for alerting number of scraped articles --}}
+<div id="alertModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+        <h2>You have scraped <span id="numArticles"></span> new articles!</h2>
+      </div>
+    </div>
+  </div>
+</div>
