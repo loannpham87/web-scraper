@@ -6,13 +6,12 @@
 </div>
 
 <div class="btn-group" id="button-actions" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-primary" href="/articles">Home</button>
-  <button type="button" class="btn btn-primary" href="/savedArticles">Saved Articles</button>
-  <button type="button" class="btn btn-danger" href="/scrape">Scrape New Articles</button>
+  <button type="button" class="btn btn-light"><a href="/articles">Home</a></button>
+  <button type="button" class="btn btn-light"><a href="/savedArticles">Saved Articles</a></button>
+  <button type="button" class="btn btn-light"><a href="/scrape">Scrape New Articles</a></button>
 </div>
 
 <div class="col-md-12 articles-div">
-        {{!-- {{#if articles}} --}}
             {{#each articles}}
             {{#unless saved}}
             <div class="panel panel-default">
@@ -28,5 +27,4 @@
             </div>
             {{/unless}}
             {{/each}}
-        {{!-- {{else}} --}}
 

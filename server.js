@@ -7,8 +7,8 @@ const cheerio = require("cheerio"),
     app = express(),
     exphbs = require("express-handlebars"),
     db = require("./models"),
-    PORT = process.env.PORT || 3000;
-
+    PORT = process.env.PORT || 3000,
+    path = require("path")
     
 
 // Use morgan logger for logging requests
@@ -16,8 +16,13 @@ app.use(logger("dev"));
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Make public a static folder
-app.use(express.static("./public"));
+
+// // Make public a static folder
+// app.use(express.static(path.join(__dirname, ("./public"));
+// Make public a static dir
+
+app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "/public")));
 
 //setting up handlebars middleware
 

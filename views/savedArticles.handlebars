@@ -6,9 +6,9 @@
 </div>
 
 <div class="btn-group" id="button-actions" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-primary" href="/articles">Home</button>
-  <button type="button" class="btn btn-primary" href="/savedArticles">Saved Articles</button>
-  <button type="button" class="btn btn-danger" href="/scrape">Scrape New Articles</button>
+  <button type="button" class="btn btn-light"><a href="/articles">Home</a></button>
+  <button type="button" class="btn btn-light"><a href="/savedArticles">Saved Articles</a></button>
+  <button type="button" class="btn btn-light"><a href="/scrape">Scrape New Articles</a></button>
 </div>
 
 {{!-- #each to iterate through articles and create article panels --}}
@@ -21,7 +21,7 @@
               <a href="https://www.nytimes.com{{link}}"  target="_blank">https://www.nytimes.com{{link}}</a>
               <br><br>
 
-          <button class="addNote storyButton" data-id="{{_id}}">Add Note</button>
+          <button class="addNote storyButton" data-id="{{_id}}" data-toggle="modal" data-target="noteModal">Add Note</button>
           <button class="deleteArticle storyButton" data-id="{{_id}}">Delete Article</button>
           </div>
         </div>
