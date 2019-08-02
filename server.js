@@ -29,7 +29,8 @@ app.set('view engine', 'handlebars');
 require("./routes/apiRoutes")(app);
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost:27017/articles", { useNewUrlParser: true });
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines"
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Start the server
 app.listen(PORT, function () {
