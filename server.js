@@ -7,9 +7,9 @@ const cheerio = require("cheerio"),
     app = express(),
     exphbs = require("express-handlebars"),
     db = require("./models"),
-    PORT = process.env.PORT || 3000,
-    path = require("path")
+    path = require("path");
     
+let PORT = process.env.PORT || 3000;
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
