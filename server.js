@@ -1,14 +1,14 @@
 // dependencies and constants
 const cheerio = require("cheerio"),
-    axios = require("axios"),
-    express = require("express"),
-    logger = require("morgan"),
-    mongoose = require("mongoose"),
-    app = express(),
-    exphbs = require("express-handlebars"),
-    db = require("./models"),
-    path = require("path");
-    
+  axios = require("axios"),
+  express = require("express"),
+  logger = require("morgan"),
+  mongoose = require("mongoose"),
+  app = express(),
+  exphbs = require("express-handlebars"),
+  db = require("./models"),
+  path = require("path");
+
 let PORT = process.env.PORT || 3000;
 
 // Use morgan logger for logging requests
@@ -22,18 +22,18 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 //setting up handlebars middleware
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 //apiRoutes
 require("./routes/apiRoutes")(app);
 
 // Connect to the Mongo DB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines"
-mongoose.connect(MONGODB_URI);
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Start the server
-app.listen(PORT, function () {
+app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
 });
-
