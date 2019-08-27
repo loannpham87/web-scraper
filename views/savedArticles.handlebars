@@ -1,49 +1,101 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Saved Articles</h1>
-    <p class="lead">Your Saved Articles</p>
+    <h1 class="display-4">
+      Saved Articles
+    </h1>
+    <p class="lead">
+      Your Saved Articles
+    </p>
   </div>
 </div>
-
-<div class="btn-group" id="button-actions" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-light"><a href="/articles">Home</a></button>
-  <button type="button" class="btn btn-light"><a href="/savedArticles">Saved Articles</a></button>
-  <button type="button" class="btn btn-light"><a href="/scrape">Scrape New Articles</a></button>
+<div
+  class="btn-group"
+  id="button-actions"
+  role="group"
+  aria-label="Basic example"
+>
+  <button type="button" class="btn btn-light">
+    <a href="/articles">
+      Home
+    </a>
+  </button>
+  <button type="button" class="btn btn-light">
+    <a href="/savedArticles">
+      Saved Articles
+    </a>
+  </button>
+  <button type="button" class="btn btn-light">
+    <a href="/scrape">
+      Scrape New Articles
+    </a>
+  </button>
 </div>
+{{! #each to iterate through articles and create article panels }}
+{{#each articles}}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>
+        {{title}}
+      </h4>
+    </div>
+    <div class="panel-body">
+      <a href="https://www.nytimes.com{{link}}" target="_blank">
+        https://www.nytimes.com
+        {{link}}
+      </a>
+      <br />
+      <br />
+      <button
+        class="addNote storyButton"
+        data-id="{{_id}}"
+        data-toggle="modal"
+        data-target="noteModal"
+      >
+        Add Note
+      </button>
+      <button class="deleteArticle storyButton" data-id="{{_id}}">
+        Delete Article
+      </button>
+    </div>
+  </div>
+{{/each}}
+{{! modal for displaying and creating notes }}
+<div id="noteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          ×
+        </button>
+        <h4 class="modal-title text-center">
+          Add a note!
+        </h4>
+      </div>
+      <div class="modal-body">
+        <input
+          type="text"
+          id="noteTitleEntry"
+          class="noteInput"
+          placeholder="Enter Title"
+         />
 
-{{!-- #each to iterate through articles and create article panels --}}
-  {{#each articles}}
-        <div class="panel panel-default">
-          <div class="panel-heading">
-              <h4>{{title}}</h4>
-          </div>
-          <div class="panel-body">
-              <a href="https://www.nytimes.com{{link}}"  target="_blank">https://www.nytimes.com{{link}}</a>
-              <br><br>
+        <input
+          type="text"
+          id="noteBodyEntry"
+          class="noteInput"
+          placeholder="Enter Body"
+         />
 
-          <button class="addNote storyButton" data-id="{{_id}}" data-toggle="modal" data-target="noteModal">Add Note</button>
-          <button class="deleteArticle storyButton" data-id="{{_id}}">Delete Article</button>
-          </div>
-        </div>
-  {{/each}}
-
-   {{!-- modal for displaying and creating notes --}}
-  <div id="noteModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title text-center">Add a note</h4>
-        </div>
-        <div class="modal-body">
-          <input type="text" id="noteTitleEntry" class="noteInput" placeholder="Enter Title">
-          <input type="text" id="noteBodyEntry" class="noteInput" placeholder="Enter Body">
-          <div id="noteArea"></div>
-        </div>
-        <div class="modal-footer">
-          <h5 class="deleteNote">Click the note to read it, or X to delete</h5>
-          <button type="button" id="submitNote">Save Note</button>
-        </div>
+        <div id="noteArea"></div>
+      </div>
+      <div class="modal-footer">
+        <h5 class="deleteNote">
+          Click the note to read it, or X to delete
+        </h5>
+        <button type="button" id="submitNote">
+          Save Note
+        </button>
       </div>
     </div>
   </div>
+</div>
